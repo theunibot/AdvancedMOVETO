@@ -27,7 +27,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
@@ -49,22 +49,23 @@
                               <Component id="zTextField" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="yawLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="pitchLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="100" max="32767" attributes="0"/>
+                              <Component id="pitchTextField" min="-2" pref="200" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="runButton" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="yawLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="rollLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="getValuesButton" alignment="0" pref="121" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="yawTextField" alignment="0" pref="200" max="32767" attributes="0"/>
-                                  <Component id="runButton" max="32767" attributes="0"/>
                                   <Component id="rollTextField" pref="200" max="32767" attributes="0"/>
                                   <Component id="textInputField" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="pitchLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="89" max="32767" attributes="0"/>
-                              <Component id="pitchTextField" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -74,9 +75,10 @@
                           <Component id="startButton" alignment="0" max="32767" attributes="0"/>
                           <Component id="gripButton" alignment="0" max="32767" attributes="0"/>
                           <Component id="ungripButton" alignment="0" max="32767" attributes="0"/>
-                          <Component id="autoYawCheck" alignment="0" max="32767" attributes="0"/>
-                          <Component id="getValuesButton" alignment="0" pref="144" max="32767" attributes="0"/>
-                          <Component id="deengButton" alignment="1" pref="144" max="32767" attributes="0"/>
+                          <Component id="deengButton" alignment="1" pref="133" max="32767" attributes="0"/>
+                          <Component id="autoD1YawCheck" alignment="0" max="32767" attributes="0"/>
+                          <Component id="autoCPYawCheck" alignment="1" max="32767" attributes="0"/>
+                          <Component id="autoD2YawCheck" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -124,16 +126,26 @@
                   <Component id="deengButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="runButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="autoYawCheck" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="runButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="textInputField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="autoCPYawCheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="textInputField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="getValuesButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="getValuesButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="autoD1YawCheck" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="autoD2YawCheck" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="17" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -292,12 +304,12 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ungripButtonMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="autoYawCheck">
+    <Component class="javax.swing.JCheckBox" name="autoD1YawCheck">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CP Yaw"/>
+        <Property name="text" type="java.lang.String" value="D1 Yaw"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="autoYawCheckMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="autoD1YawCheckMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="textInputField">
@@ -319,6 +331,22 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deengButtonMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="autoCPYawCheck">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CP Yaw"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="autoCPYawCheckMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="autoD2YawCheck">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="D2 Yaw"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="autoD2YawCheckMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>
