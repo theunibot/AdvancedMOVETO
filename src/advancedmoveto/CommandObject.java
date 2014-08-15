@@ -31,7 +31,7 @@ public class CommandObject
 
     public String getRoboforth(String routeName)
     {
-        return "DECIMAL " + formatString(roll) + " " + formatString(yaw) + " " + formatString(pitch) + " " + convert(z) + " " + convert(y) + " " + convert(x) + " " + routeName + " 1 LINE DLD";
+        return "DECIMAL " + formatString(roll) + " " + formatString(yaw) + " " + formatString(pitch) + " " + convertZ(z) + " " + convert(y) + " " + convert(x) + " " + routeName + " 1 LINE DLD";
     }
 
     private String convert(String s)
@@ -42,6 +42,14 @@ public class CommandObject
         return formatDouble(d);
     }
 
+    private String convertZ(String s)
+    {
+        double d = Double.parseDouble(s);
+        //convert in to mm
+        d = ((d * 25.4) - 303.0);
+        return formatDouble(d);
+    }
+    
     public static String formatDouble(double d)
     {
 
