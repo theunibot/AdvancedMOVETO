@@ -70,11 +70,11 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="homeButton" max="32767" attributes="0"/>
-                              <Component id="calButton" pref="92" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="startButton" alignment="1" pref="92" max="32767" attributes="0"/>
+                          <Component id="homeButton" max="32767" attributes="0"/>
+                          <Component id="calButton" alignment="0" pref="92" max="32767" attributes="0"/>
+                          <Component id="startButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="gripButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ungripButton" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -103,15 +103,17 @@
                   <Component id="zLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="calButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="pitchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="pitchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gripButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="yawTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="yawLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ungripButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -121,7 +123,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="runButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="111" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="110" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -259,6 +261,22 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="startButtonMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="gripButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Grip"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="gripButtonMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="ungripButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ungrip"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ungripButtonMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>

@@ -53,6 +53,8 @@ public class GUI extends javax.swing.JFrame
         homeButton = new javax.swing.JButton();
         calButton = new javax.swing.JButton();
         startButton = new javax.swing.JButton();
+        gripButton = new javax.swing.JButton();
+        ungripButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Advanced MOVETO");
@@ -214,6 +216,24 @@ public class GUI extends javax.swing.JFrame
             }
         });
 
+        gripButton.setText("Grip");
+        gripButton.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                gripButtonMouseClicked(evt);
+            }
+        });
+
+        ungripButton.setText("Ungrip");
+        ungripButton.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                ungripButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -252,10 +272,11 @@ public class GUI extends javax.swing.JFrame
                                 .addComponent(pitchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(calButton, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
-                            .addComponent(startButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))))
+                            .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(calButton, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                            .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(gripButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ungripButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -276,14 +297,16 @@ public class GUI extends javax.swing.JFrame
                     .addComponent(zTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(zLabel)
                     .addComponent(calButton))
-                .addGap(6, 6, 6)
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pitchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pitchLabel))
-                .addGap(6, 6, 6)
+                    .addComponent(pitchLabel)
+                    .addComponent(gripButton))
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(yawTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yawLabel))
+                    .addComponent(yawLabel)
+                    .addComponent(ungripButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rollTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,7 +314,7 @@ public class GUI extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(runButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -438,6 +461,24 @@ public class GUI extends javax.swing.JFrame
         }
     }//GEN-LAST:event_startButtonMouseClicked
 
+    private void gripButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_gripButtonMouseClicked
+    {//GEN-HEADEREND:event_gripButtonMouseClicked
+        synchronized (Main.commandsToAdd)
+        {
+            Main.commandsToAdd.add(new CommandGrip());
+            Main.commandsLatch.unlock();
+        }
+    }//GEN-LAST:event_gripButtonMouseClicked
+
+    private void ungripButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_ungripButtonMouseClicked
+    {//GEN-HEADEREND:event_ungripButtonMouseClicked
+        synchronized (Main.commandsToAdd)
+        {
+            Main.commandsToAdd.add(new CommandUngrip());
+            Main.commandsLatch.unlock();
+        }
+    }//GEN-LAST:event_ungripButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -496,6 +537,7 @@ public class GUI extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton calButton;
+    private javax.swing.JButton gripButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea outputText;
@@ -505,6 +547,7 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JTextField rollTextField;
     private javax.swing.JButton runButton;
     private javax.swing.JButton startButton;
+    private javax.swing.JButton ungripButton;
     private javax.swing.JLabel xLabel;
     private javax.swing.JTextField xTextField;
     private javax.swing.JLabel yLabel;

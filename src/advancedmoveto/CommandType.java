@@ -12,5 +12,5 @@ package advancedmoveto;
  */
 public enum CommandType
 {
-    COMMAND, CALIBRATE, HOME, START
+    COMMAND, CALIBRATE, HOME, START, GRIP, UNGRIP
 }
