@@ -49,22 +49,23 @@
                               <Component id="zTextField" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="yawLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="42" max="32767" attributes="0"/>
-                              <Component id="yawTextField" min="-2" pref="200" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="pitchLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="pitchTextField" min="-2" pref="200" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="rollLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="runButton" max="32767" attributes="0"/>
-                                  <Component id="rollTextField" pref="200" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="yawLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rollLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="yawTextField" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="runButton" max="32767" attributes="0"/>
+                                      <Component id="rollTextField" pref="200" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="pitchLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="39" max="32767" attributes="0"/>
+                              <Component id="pitchTextField" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -73,7 +74,7 @@
                               <Component id="homeButton" max="32767" attributes="0"/>
                               <Component id="calButton" pref="92" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="startButton" alignment="1" max="32767" attributes="0"/>
+                          <Component id="startButton" alignment="1" pref="92" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -91,31 +92,23 @@
                   <Component id="startButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="yTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="yLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="zTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="zLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                      <Component id="homeButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="calButton" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="yTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="yLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="homeButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="pitchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="pitchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="zTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="zLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="calButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pitchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="pitchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="yawTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="yawLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -128,7 +121,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="runButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="110" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="111" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
