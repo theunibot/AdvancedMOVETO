@@ -54,27 +54,29 @@
                                   <Component id="rollLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="yawTextField" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="runButton" max="32767" attributes="0"/>
-                                      <Component id="rollTextField" pref="200" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="yawTextField" alignment="0" pref="200" max="32767" attributes="0"/>
+                                  <Component id="runButton" max="32767" attributes="0"/>
+                                  <Component id="rollTextField" pref="200" max="32767" attributes="0"/>
+                                  <Component id="textInputField" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="pitchLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="39" max="32767" attributes="0"/>
+                              <EmptySpace pref="89" max="32767" attributes="0"/>
                               <Component id="pitchTextField" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="homeButton" max="32767" attributes="0"/>
-                          <Component id="calButton" alignment="0" pref="92" max="32767" attributes="0"/>
+                          <Component id="calButton" alignment="0" max="32767" attributes="0"/>
                           <Component id="startButton" alignment="0" max="32767" attributes="0"/>
                           <Component id="gripButton" alignment="0" max="32767" attributes="0"/>
                           <Component id="ungripButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="autoYawCheck" alignment="0" max="32767" attributes="0"/>
+                          <Component id="getValuesButton" alignment="0" pref="144" max="32767" attributes="0"/>
+                          <Component id="deengButton" alignment="1" pref="144" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -119,11 +121,20 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="rollTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="rollLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="deengButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="runButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="110" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="runButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="autoYawCheck" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="textInputField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="getValuesButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -137,6 +148,7 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="yTextFieldActionPerformed"/>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="yTextFieldKeyPressed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="yTextFieldKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="xLabel">
@@ -157,6 +169,7 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="xTextFieldActionPerformed"/>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="xTextFieldKeyPressed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="xTextFieldKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="zLabel">
@@ -194,7 +207,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="pitchTextField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="-90.0"/>
+        <Property name="text" type="java.lang.String" value="90.0"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pitchTextFieldActionPerformed"/>
@@ -277,6 +290,35 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ungripButtonMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="autoYawCheck">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CP Yaw"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="autoYawCheckMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="textInputField">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textInputFieldKeyPressed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="getValuesButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Get Values"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="getValuesButtonMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="deengButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="De-Energize"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deengButtonMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>

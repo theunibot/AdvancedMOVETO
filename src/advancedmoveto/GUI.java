@@ -55,6 +55,10 @@ public class GUI extends javax.swing.JFrame
         startButton = new javax.swing.JButton();
         gripButton = new javax.swing.JButton();
         ungripButton = new javax.swing.JButton();
+        autoYawCheck = new javax.swing.JCheckBox();
+        textInputField = new javax.swing.JTextField();
+        getValuesButton = new javax.swing.JButton();
+        deengButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Advanced MOVETO");
@@ -80,6 +84,10 @@ public class GUI extends javax.swing.JFrame
             {
                 yTextFieldKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt)
+            {
+                yTextFieldKeyReleased(evt);
+            }
         });
 
         xLabel.setText("X:");
@@ -100,6 +108,10 @@ public class GUI extends javax.swing.JFrame
             public void keyPressed(java.awt.event.KeyEvent evt)
             {
                 xTextFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt)
+            {
+                xTextFieldKeyReleased(evt);
             }
         });
 
@@ -141,7 +153,7 @@ public class GUI extends javax.swing.JFrame
 
         yawLabel.setText("Yaw:");
 
-        pitchTextField.setText("-90.0");
+        pitchTextField.setText("90.0");
         pitchTextField.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -234,6 +246,41 @@ public class GUI extends javax.swing.JFrame
             }
         });
 
+        autoYawCheck.setText("CP Yaw");
+        autoYawCheck.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                autoYawCheckMouseClicked(evt);
+            }
+        });
+
+        textInputField.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                textInputFieldKeyPressed(evt);
+            }
+        });
+
+        getValuesButton.setText("Get Values");
+        getValuesButton.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                getValuesButtonMouseClicked(evt);
+            }
+        });
+
+        deengButton.setText("De-Energize");
+        deengButton.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                deengButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -261,22 +308,25 @@ public class GUI extends javax.swing.JFrame
                                     .addComponent(yawLabel)
                                     .addComponent(rollLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(yawTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(runButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(rollTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(yawTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(runButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(rollTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(textInputField)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(pitchLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                                 .addComponent(pitchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(calButton, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                            .addComponent(calButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(gripButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ungripButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(ungripButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(autoYawCheck, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(getValuesButton, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                            .addComponent(deengButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -310,11 +360,18 @@ public class GUI extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rollTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rollLabel))
+                    .addComponent(rollLabel)
+                    .addComponent(deengButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(runButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(runButton)
+                    .addComponent(autoYawCheck))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(getValuesButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -388,18 +445,21 @@ public class GUI extends javax.swing.JFrame
 
     private void xTextFieldKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_xTextFieldKeyPressed
     {//GEN-HEADEREND:event_xTextFieldKeyPressed
+        
         if (KeyEvent.VK_ESCAPE == evt.getKeyCode())
         {
             execute();
-        }
+        }        
     }//GEN-LAST:event_xTextFieldKeyPressed
 
     private void yTextFieldKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_yTextFieldKeyPressed
     {//GEN-HEADEREND:event_yTextFieldKeyPressed
+       
         if (KeyEvent.VK_ESCAPE == evt.getKeyCode())
         {
             execute();
         }
+        
     }//GEN-LAST:event_yTextFieldKeyPressed
 
     private void zTextFieldKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_zTextFieldKeyPressed
@@ -479,6 +539,99 @@ public class GUI extends javax.swing.JFrame
         }
     }//GEN-LAST:event_ungripButtonMouseClicked
 
+    private void autoYawCheckMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_autoYawCheckMouseClicked
+    {//GEN-HEADEREND:event_autoYawCheckMouseClicked
+        if (autoYawCheck.isSelected())
+        {
+            System.out.println("SELECTED");
+            yawTextField.setEnabled(false);
+            yawTextField.setText(computeYaw(xTextField.getText(), yTextField.getText()));
+        }
+        else
+        {
+            System.out.println("DE_SELECTED");
+            yawTextField.setEnabled(true);
+        }
+    }//GEN-LAST:event_autoYawCheckMouseClicked
+
+    private void textInputFieldKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_textInputFieldKeyPressed
+    {//GEN-HEADEREND:event_textInputFieldKeyPressed
+        if (KeyEvent.VK_ESCAPE == evt.getKeyCode())
+        {
+            loadValues();
+        }
+    }//GEN-LAST:event_textInputFieldKeyPressed
+
+    private void getValuesButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_getValuesButtonMouseClicked
+    {//GEN-HEADEREND:event_getValuesButtonMouseClicked
+        textInputField.setText(xTextField.getText() + " " + yTextField.getText() + " " + zTextField.getText() + " " + pitchTextField.getText() + " " + yawTextField.getText() + " " + rollTextField.getText());
+    }//GEN-LAST:event_getValuesButtonMouseClicked
+
+    private void xTextFieldKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_xTextFieldKeyReleased
+    {//GEN-HEADEREND:event_xTextFieldKeyReleased
+        if (autoYawCheck.isSelected())
+        {
+            yawTextField.setText(computeYaw(xTextField.getText(), yTextField.getText()));
+        }
+    }//GEN-LAST:event_xTextFieldKeyReleased
+
+    private void yTextFieldKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_yTextFieldKeyReleased
+    {//GEN-HEADEREND:event_yTextFieldKeyReleased
+        if (autoYawCheck.isSelected())
+        {
+            yawTextField.setText(computeYaw(xTextField.getText(), yTextField.getText()));
+        }
+    }//GEN-LAST:event_yTextFieldKeyReleased
+
+    private void deengButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_deengButtonMouseClicked
+    {//GEN-HEADEREND:event_deengButtonMouseClicked
+        synchronized (Main.commandsToAdd)
+        {
+            Main.commandsToAdd.add(new CommandDeenergize());
+            Main.commandsLatch.unlock();
+        }
+    }//GEN-LAST:event_deengButtonMouseClicked
+
+    private void loadValues()
+    {
+        String line = textInputField.getText();
+        String[] chunks = line.split(" ");
+        if (chunks.length == 7)
+        {
+            xTextField.setText(chunks[1]);
+            yTextField.setText(chunks[2]);
+            zTextField.setText(chunks[3]);
+            pitchTextField.setText(chunks[4]);
+            yawTextField.setText(chunks[5]);
+            rollTextField.setText(chunks[6]);
+        }
+        else if (chunks.length == 6)
+        {
+            xTextField.setText(chunks[0]);
+            yTextField.setText(chunks[1]);
+            zTextField.setText(chunks[2]);
+            pitchTextField.setText(chunks[3]);
+            yawTextField.setText(chunks[4]);
+            rollTextField.setText(chunks[5]);
+        }
+    }
+
+    private String computeYaw(String x, String y)
+    {
+        try
+        {
+            double xDbl = Double.parseDouble(x);
+            double yDbl = Double.parseDouble(y);
+            System.out.println("X " + xDbl + " Y " + yDbl);
+            return String.valueOf(-Math.toDegrees(Math.atan2(xDbl, yDbl)));
+        }
+        catch (Exception ex)
+        {
+
+        }
+        return "0";
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -536,7 +689,10 @@ public class GUI extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox autoYawCheck;
     private javax.swing.JButton calButton;
+    private javax.swing.JButton deengButton;
+    private javax.swing.JButton getValuesButton;
     private javax.swing.JButton gripButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JScrollPane jScrollPane1;
@@ -547,6 +703,7 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JTextField rollTextField;
     private javax.swing.JButton runButton;
     private javax.swing.JButton startButton;
+    private javax.swing.JTextField textInputField;
     private javax.swing.JButton ungripButton;
     private javax.swing.JLabel xLabel;
     private javax.swing.JTextField xTextField;
