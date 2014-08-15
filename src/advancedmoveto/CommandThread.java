@@ -56,7 +56,7 @@ public class CommandThread extends Thread
     {
         try
         {
-            if (ci.isMoveto())
+            if (ci.getType() == CommandType.COMMAND)
             {
                 addResponse(new ResponseObject(true, "Starting ROBOFORTH"));
                 r12o.write("ROUTE AMT");
@@ -68,6 +68,13 @@ public class CommandThread extends Thread
                 r12o.write(ci.getRoboforth("AMT"));
                 addResponse(r12o.getResponse(""));
                 r12o.write("AMT RUN");
+                addResponse(r12o.getResponse(""));
+            }
+            else if(ci.getType() == CommandType.START)
+            {
+                r12o.write("ROBOFORTH");
+                addResponse(r12o.getResponse(""));
+                r12o.write("START");
                 addResponse(r12o.getResponse(""));
             }
             else

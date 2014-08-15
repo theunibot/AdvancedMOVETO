@@ -10,19 +10,19 @@ package advancedmoveto;
  *
  * @author kyle
  */
-public class CommandHome implements CommandInterface
+public class CommandStart implements CommandInterface
 {
 
     @Override
     public String getRoboforth(String routeName)
     {
-        return "HOME";
+        return "START";
     }
 
     @Override
     public CommandType getType()
     {
-        return CommandType.HOME;
+        return CommandType.START;
     }
     
 }

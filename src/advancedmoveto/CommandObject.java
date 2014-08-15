@@ -100,9 +100,9 @@ public class CommandObject implements CommandInterface
     }
 
     @Override
-    public boolean isMoveto()
+    public CommandType getType()
     {
-        return true;
+        return CommandType.COMMAND;
     }
 
 }

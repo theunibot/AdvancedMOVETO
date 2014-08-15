@@ -10,9 +10,7 @@ package advancedmoveto;
  *
  * @author kyle
  */
-public interface CommandInterface
+public enum CommandType
 {
-    public String getRoboforth(String routeName);
-    
-    public CommandType getType();
+    COMMAND, CALIBRATE, HOME, START
 }

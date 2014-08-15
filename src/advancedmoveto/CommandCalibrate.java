@@ -20,9 +20,9 @@ public class CommandCalibrate implements CommandInterface
     }
 
     @Override
-    public boolean isMoveto()
+    public CommandType getType()
     {
-        return  false;
+        return CommandType.CALIBRATE;
     }
     
 }
