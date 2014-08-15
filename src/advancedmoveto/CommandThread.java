@@ -35,15 +35,15 @@ public class CommandThread extends Thread
             Main.commandsLatch.await();
             boolean lock = false;
 
-            CommandObject co = null;
+            CommandInterface ci = null;
             synchronized (Main.commandsToAdd)
             {
-                co = Main.commandsToAdd.get(0);
+                ci = Main.commandsToAdd.get(0);
                 Main.commandsToAdd.remove(0);
                 lock = (Main.commandsToAdd.size() == 0);
             }
 
-            writeRoboforth(co);
+            writeRoboforth(ci);
 
             if (lock)
             {
@@ -52,21 +52,29 @@ public class CommandThread extends Thread
         }
     }
 
-    private void writeRoboforth(CommandObject co)
+    private void writeRoboforth(CommandInterface ci)
     {
         try
         {
-            addResponse(new ResponseObject(true, "Starting ROBOFORTH"));
-            r12o.write("ROUTE AMT");
-            addResponse(r12o.getResponse(""));
-            r12o.write("1 RESERVE");
-            addResponse(r12o.getResponse(""));
-            r12o.write("LEARN");
-            addResponse(r12o.getResponse(""));
-            r12o.write(co.getRoboforth("AMT"));
-            addResponse(r12o.getResponse(""));
-            r12o.write("AMT RUN");
-            addResponse(r12o.getResponse(""));
+            if (ci.isMoveto())
+            {
+                addResponse(new ResponseObject(true, "Starting ROBOFORTH"));
+                r12o.write("ROUTE AMT");
+                addResponse(r12o.getResponse(""));
+                r12o.write("1 RESERVE");
+                addResponse(r12o.getResponse(""));
+                r12o.write("LEARN");
+                addResponse(r12o.getResponse(""));
+                r12o.write(ci.getRoboforth("AMT"));
+                addResponse(r12o.getResponse(""));
+                r12o.write("AMT RUN");
+                addResponse(r12o.getResponse(""));
+            }
+            else
+            {
+                r12o.write(ci.getRoboforth(null));
+                addResponse(r12o.getResponse(""));
+            }
         }
         catch (Exception ex)
         {
@@ -78,7 +86,7 @@ public class CommandThread extends Thread
     {
         synchronized (Main.responsesToAdd)
         {
-            Main.responsesToAdd.add(ro);          
+            Main.responsesToAdd.add(ro);
             Main.responsesLatch.unlock();
         }
     }

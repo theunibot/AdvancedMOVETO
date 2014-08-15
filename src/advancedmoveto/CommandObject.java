@@ -9,7 +9,7 @@ package advancedmoveto;
  *
  * @author kyle
  */
-public class CommandObject
+public class CommandObject implements CommandInterface
 {
 
     private String x;
@@ -97,6 +97,12 @@ public class CommandObject
     public String getRoll()
     {
         return roll;
+    }
+
+    @Override
+    public boolean isMoveto()
+    {
+        return true;
     }
 
 }

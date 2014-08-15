@@ -17,7 +17,7 @@ import java.util.List;
 public class Main
 {
 
-    public static List<CommandObject> commandsToAdd = null;
+    public static List<CommandInterface> commandsToAdd = null;
     public static List<ResponseObject> responsesToAdd = null;
     public static Latch commandsLatch = null;
     public static Latch responsesLatch = null;
@@ -27,7 +27,7 @@ public class Main
      */
     public static void main(String[] args)
     {
-        commandsToAdd = Collections.synchronizedList(new ArrayList<CommandObject>());
+        commandsToAdd = Collections.synchronizedList(new ArrayList<CommandInterface>());
         responsesToAdd = Collections.synchronizedList(new ArrayList<ResponseObject>());
         commandsLatch = new Latch();
         responsesLatch = new Latch();

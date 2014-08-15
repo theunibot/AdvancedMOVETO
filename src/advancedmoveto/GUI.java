@@ -50,6 +50,8 @@ public class GUI extends javax.swing.JFrame
         runButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         outputText = new javax.swing.JTextArea();
+        homeButton = new javax.swing.JButton();
+        calButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Advanced MOVETO");
@@ -184,6 +186,24 @@ public class GUI extends javax.swing.JFrame
         outputText.setRows(5);
         jScrollPane1.setViewportView(outputText);
 
+        homeButton.setText("Home");
+        homeButton.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                homeButtonMouseClicked(evt);
+            }
+        });
+
+        calButton.setText("Calibrate");
+        calButton.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                calButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -191,9 +211,7 @@ public class GUI extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -210,20 +228,23 @@ public class GUI extends javax.swing.JFrame
                                 .addComponent(zTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(yawLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                                 .addComponent(yawTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(pitchLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(pitchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pitchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(rollLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(runButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(rollTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))))
-                        .addGap(131, 131, 131))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(calButton, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,11 +252,13 @@ public class GUI extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(xLabel)
-                    .addComponent(xTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(xTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(homeButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(yTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yLabel))
+                    .addComponent(yLabel)
+                    .addComponent(calButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(zTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -255,7 +278,7 @@ public class GUI extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(runButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -321,15 +344,15 @@ public class GUI extends javax.swing.JFrame
             }
         }
     }
-    
+
     private void formKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_formKeyPressed
     {//GEN-HEADEREND:event_formKeyPressed
-                
+
     }//GEN-LAST:event_formKeyPressed
 
     private void xTextFieldKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_xTextFieldKeyPressed
     {//GEN-HEADEREND:event_xTextFieldKeyPressed
-        if(KeyEvent.VK_ESCAPE == evt.getKeyCode())
+        if (KeyEvent.VK_ESCAPE == evt.getKeyCode())
         {
             execute();
         }
@@ -337,7 +360,7 @@ public class GUI extends javax.swing.JFrame
 
     private void yTextFieldKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_yTextFieldKeyPressed
     {//GEN-HEADEREND:event_yTextFieldKeyPressed
-        if(KeyEvent.VK_ESCAPE == evt.getKeyCode())
+        if (KeyEvent.VK_ESCAPE == evt.getKeyCode())
         {
             execute();
         }
@@ -345,7 +368,7 @@ public class GUI extends javax.swing.JFrame
 
     private void zTextFieldKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_zTextFieldKeyPressed
     {//GEN-HEADEREND:event_zTextFieldKeyPressed
-        if(KeyEvent.VK_ESCAPE == evt.getKeyCode())
+        if (KeyEvent.VK_ESCAPE == evt.getKeyCode())
         {
             execute();
         }
@@ -353,7 +376,7 @@ public class GUI extends javax.swing.JFrame
 
     private void pitchTextFieldKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_pitchTextFieldKeyPressed
     {//GEN-HEADEREND:event_pitchTextFieldKeyPressed
-        if(KeyEvent.VK_ESCAPE == evt.getKeyCode())
+        if (KeyEvent.VK_ESCAPE == evt.getKeyCode())
         {
             execute();
         }
@@ -361,7 +384,7 @@ public class GUI extends javax.swing.JFrame
 
     private void yawTextFieldKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_yawTextFieldKeyPressed
     {//GEN-HEADEREND:event_yawTextFieldKeyPressed
-        if(KeyEvent.VK_ESCAPE == evt.getKeyCode())
+        if (KeyEvent.VK_ESCAPE == evt.getKeyCode())
         {
             execute();
         }
@@ -369,11 +392,29 @@ public class GUI extends javax.swing.JFrame
 
     private void rollTextFieldKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_rollTextFieldKeyPressed
     {//GEN-HEADEREND:event_rollTextFieldKeyPressed
-        if(KeyEvent.VK_ESCAPE == evt.getKeyCode())
+        if (KeyEvent.VK_ESCAPE == evt.getKeyCode())
         {
             execute();
         }
     }//GEN-LAST:event_rollTextFieldKeyPressed
+
+    private void homeButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_homeButtonMouseClicked
+    {//GEN-HEADEREND:event_homeButtonMouseClicked
+        synchronized (Main.commandsToAdd)
+        {
+            Main.commandsToAdd.add(new CommandHome());
+            Main.commandsLatch.unlock();
+        }
+    }//GEN-LAST:event_homeButtonMouseClicked
+
+    private void calButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_calButtonMouseClicked
+    {//GEN-HEADEREND:event_calButtonMouseClicked
+        synchronized (Main.commandsToAdd)
+        {
+            Main.commandsToAdd.add(new CommandCalibrate());
+            Main.commandsLatch.unlock();
+        }
+    }//GEN-LAST:event_calButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -432,6 +473,8 @@ public class GUI extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton calButton;
+    private javax.swing.JButton homeButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea outputText;
     private javax.swing.JLabel pitchLabel;
